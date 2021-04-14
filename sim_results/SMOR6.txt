@@ -1,0 +1,5 @@
+t_enroll	t_reconstruct	FER
+4	1	1.6e-06
+5	2	2e-07
+6	3	0
+7	4	2e-07
