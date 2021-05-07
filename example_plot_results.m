@@ -30,7 +30,7 @@ title('MO scheme')
 % save as .txt
 if storetable
     t_enroll = (1:t_max)';FER=FER(t_enroll)';
-    T = table(t_enroll,FER); % let op het moeten columns zijn
+    T = table(t_enroll,FER); % t_enroll should be column vector
     writetable(T,sprintf('sim_results/MOR%d.txt',R),'Delimiter','\t');
 end
 
