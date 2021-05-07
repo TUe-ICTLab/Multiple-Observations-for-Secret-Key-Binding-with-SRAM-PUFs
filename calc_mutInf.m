@@ -34,21 +34,18 @@ for i=1:t_max % kan sowieso tot 20
     pold = pnew;
 end
 IX_Y = HX(1)- diff(HXX);
- figure;plot(IX_T*ones(size(IX_Y)),'--');
-hold on;plot(IX_Y);title('Mutual information after \tau enrollments');
 
- xlabel('\tau enrollments');
- ylabel('I(X_1 .. X_\tau;Z)');grid on;
- legend('I(X;\Theta)','Location','southeast');
- text(t_max-1,IX_T,sprintf('bound: %0.4f',IX_T),'Color','r') 
- figure;
- plot(HXX-HX(1));hold on;plot(log2(1:t_max))
- legend('H(X_1 ... X_t|Y)','log2(M)');
+figure;plot(IX_T*ones(size(IX_Y)),'--');
+hold on;plot(IX_Y);title('Mutual information after t enrollments');
+xlabel('t enrollment observations');
+ylabel('I(Y;X_1 .. X_t)');grid on;
+text(t_max-1,IX_T,sprintf('bound: %0.4f',IX_T),'Color','b') 
+
 
 function y = calcnewdistr(theta,theta_old)
-% given the old theta.^k * (1-theta).^n-k generate new ones
-theta = repmat(theta,size(theta_old,1),1);
-y = repmat(theta_old,2,1).*[theta;(1-theta)];
+    % given the old theta.^k * (1-theta).^n-k generate new ones
+    theta = repmat(theta,size(theta_old,1),1);
+    y = repmat(theta_old,2,1).*[theta;(1-theta)];
 end
 
 
@@ -73,7 +70,8 @@ function [cdftheta,pdftheta,STATS] = generate_cdf_theta(lambda1,lambda2)
     % verify by plotting the pdf
     if 1
         figure;plot(pdftheta(2,:),pdftheta(1,:));
-        xlabel('theta');ylabel('p(theta)');
+        xlabel('\theta');ylabel('p(\theta)');
+        grid on;set(gca, 'YScale', 'log')
     end
     % average error probability between two observations of a cell
     Pe_avg = sum(2.*pdftheta(2,:).*(1-pdftheta(2,:)).*pdftheta(1,:));
@@ -84,9 +82,9 @@ function [cdftheta,pdftheta,STATS] = generate_cdf_theta(lambda1,lambda2)
 end
 
 function entr = entropyLK(p)
-% ENTROPY: calculate the binary entropy of distribution given by p
-% p should be column vector
-entr = -p.*log2(p);
-entr(p==0|p==1) = 0;
-entr = sum(entr,1);
+    % ENTROPY: calculate the binary entropy of distribution given by p
+    % p should be column vector
+    entr = -p.*log2(p);
+    entr(p==0|p==1) = 0;
+    entr = sum(entr,1);
 end
