@@ -2,6 +2,7 @@
 clear all
 close all
 
+addpath('functions')
 rng('shuffle')             
 
 % settings
