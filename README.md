@@ -11,3 +11,10 @@ Files description:
 - /sim_results : example results for running the simulations
 - /functions/sim_MOhds.m : Monte Carlo simulation of Multiple Observations scheme
 - /functions/sim_SMOhds.m: Monte Carlo simulation of Sequential Multiple Observations scheme
+
+
+This package requires the following MATLAB toolboxes
+- Communications toolbox
+- 5G Toolbox
+- DSP System Toolbox
+- Statistics and Machine Learning Toolbox
