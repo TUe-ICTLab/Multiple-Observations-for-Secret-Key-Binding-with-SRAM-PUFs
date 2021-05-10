@@ -1,7 +1,7 @@
 # SRAMPUF-MultipleObservations
-MATLAB code used for generating the plots in our paper on Multiple Observations for Secret-Key Binding with SRAM PUFs
+MATLAB code used for generating the plots in our "Multiple Observations for Secret-Key Binding with SRAM PUFs" paper.
 
-https://doi.org/10.20944/preprints202104.0229.v1
+L. Kusters and F.M.J. Willems, "Multiple Observations for Secret-Key Binding with SRAM PUFs," in preprints, doi: https://doi.org/10.20944/preprints202104.0229.v1
 
 Files description:
 
